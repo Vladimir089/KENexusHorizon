@@ -16,6 +16,10 @@
 		15393C082C7350F2004900BB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 15393C072C7350F2004900BB /* SnapKit */; };
 		15393C0B2C73588B004900BB /* OnbUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C0A2C73588B004900BB /* OnbUserViewController.swift */; };
 		15393C0D2C737593004900BB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C0C2C737593004900BB /* HomeViewController.swift */; };
+		15393C102C74A8A1004900BB /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C0F2C74A8A1004900BB /* HistoryModel.swift */; };
+		15393C122C74AE89004900BB /* noHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C112C74AE89004900BB /* noHistoryView.swift */; };
+		15393C142C74BA6F004900BB /* NewHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C132C74BA6F004900BB /* NewHistoryViewController.swift */; };
+		15393C162C74C014004900BB /* AddNewHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C152C74C014004900BB /* AddNewHistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,10 @@
 		15393C042C734EB0004900BB /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
 		15393C0A2C73588B004900BB /* OnbUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnbUserViewController.swift; sourceTree = "<group>"; };
 		15393C0C2C737593004900BB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		15393C0F2C74A8A1004900BB /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
+		15393C112C74AE89004900BB /* noHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noHistoryView.swift; sourceTree = "<group>"; };
+		15393C132C74BA6F004900BB /* NewHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHistoryViewController.swift; sourceTree = "<group>"; };
+		15393C152C74C014004900BB /* AddNewHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHistoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				15393C0C2C737593004900BB /* HomeViewController.swift */,
+				15393C0F2C74A8A1004900BB /* HistoryModel.swift */,
+				15393C112C74AE89004900BB /* noHistoryView.swift */,
+				15393C132C74BA6F004900BB /* NewHistoryViewController.swift */,
+				15393C152C74C014004900BB /* AddNewHistoryView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -185,10 +197,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				15393C0D2C737593004900BB /* HomeViewController.swift in Sources */,
+				15393C162C74C014004900BB /* AddNewHistoryView.swift in Sources */,
 				15393C052C734EB0004900BB /* LoadViewController.swift in Sources */,
+				15393C102C74A8A1004900BB /* HistoryModel.swift in Sources */,
 				15393BEF2C734C7E004900BB /* AppDelegate.swift in Sources */,
+				15393C142C74BA6F004900BB /* NewHistoryViewController.swift in Sources */,
 				15393BF12C734C7E004900BB /* SceneDelegate.swift in Sources */,
 				15393C0B2C73588B004900BB /* OnbUserViewController.swift in Sources */,
+				15393C122C74AE89004900BB /* noHistoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
