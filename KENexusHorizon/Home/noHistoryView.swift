@@ -2,6 +2,8 @@ import UIKit
 import SnapKit
 
 class noHistoryView: UIView {
+    
+    
 
     private let secondView: UIView = {
         let view = UIView()

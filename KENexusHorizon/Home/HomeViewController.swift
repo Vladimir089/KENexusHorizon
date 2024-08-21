@@ -26,6 +26,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.title = ""
         hideNavigationBar()
     }
 
@@ -50,7 +51,9 @@ class HomeViewController: UIViewController {
     }
     
     
-    
+    @objc func openNotes() {
+        self.navigationController?.pushViewController(NotesViewController(), animated: true)
+    }
 
     func createInterface() {
         
@@ -110,6 +113,7 @@ class HomeViewController: UIViewController {
             make.left.equalTo(buttonSettings.snp.right).inset(-5)
             make.right.equalToSuperview().inset(15)
         }
+        notesBitton.addTarget(self, action: #selector(openNotes), for: .touchUpInside)
         
         let twoImageView = UIImageView(image: .homeImageTwo)
         twoImageView.contentMode = .scaleAspectFit
@@ -208,6 +212,9 @@ class HomeViewController: UIViewController {
             make.centerY.equalToSuperview()
             make.right.equalToSuperview().inset(15)
         }
+        
+        
+        
         addNewHisButton.addTarget(self, action: #selector(createNewHistory), for: .touchUpInside)
         
         historyCollection = {
@@ -241,6 +248,8 @@ class HomeViewController: UIViewController {
         
         checkHistArray()
     }
+    
+   
     
     
     

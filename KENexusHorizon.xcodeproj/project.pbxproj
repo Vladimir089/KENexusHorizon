@@ -20,6 +20,10 @@
 		15393C122C74AE89004900BB /* noHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C112C74AE89004900BB /* noHistoryView.swift */; };
 		15393C142C74BA6F004900BB /* NewHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C132C74BA6F004900BB /* NewHistoryViewController.swift */; };
 		15393C162C74C014004900BB /* AddNewHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C152C74C014004900BB /* AddNewHistoryView.swift */; };
+		15393C192C760434004900BB /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C182C760434004900BB /* NotesViewController.swift */; };
+		15393C1B2C760A48004900BB /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C1A2C760A48004900BB /* NotesView.swift */; };
+		1564E56E2C763D10006874EE /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1564E56D2C763D10006874EE /* NotesModel.swift */; };
+		1564E5702C764979006874EE /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1564E56F2C764979006874EE /* NewNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		15393C112C74AE89004900BB /* noHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = noHistoryView.swift; sourceTree = "<group>"; };
 		15393C132C74BA6F004900BB /* NewHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHistoryViewController.swift; sourceTree = "<group>"; };
 		15393C152C74C014004900BB /* AddNewHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewHistoryView.swift; sourceTree = "<group>"; };
+		15393C182C760434004900BB /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		15393C1A2C760A48004900BB /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		1564E56D2C763D10006874EE /* NotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesModel.swift; sourceTree = "<group>"; };
+		1564E56F2C764979006874EE /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +78,7 @@
 		15393BED2C734C7E004900BB /* KENexusHorizon */ = {
 			isa = PBXGroup;
 			children = (
+				15393C172C760185004900BB /* Notes */,
 				15393C0E2C737598004900BB /* Home */,
 				15393C092C735878004900BB /* OnbUser */,
 				15393C032C734EA2004900BB /* LoadPage */,
@@ -117,6 +126,17 @@
 				15393C152C74C014004900BB /* AddNewHistoryView.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		15393C172C760185004900BB /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				15393C182C760434004900BB /* NotesViewController.swift */,
+				15393C1A2C760A48004900BB /* NotesView.swift */,
+				1564E56D2C763D10006874EE /* NotesModel.swift */,
+				1564E56F2C764979006874EE /* NewNoteViewController.swift */,
+			);
+			path = Notes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,9 +219,13 @@
 				15393C0D2C737593004900BB /* HomeViewController.swift in Sources */,
 				15393C162C74C014004900BB /* AddNewHistoryView.swift in Sources */,
 				15393C052C734EB0004900BB /* LoadViewController.swift in Sources */,
+				1564E5702C764979006874EE /* NewNoteViewController.swift in Sources */,
 				15393C102C74A8A1004900BB /* HistoryModel.swift in Sources */,
 				15393BEF2C734C7E004900BB /* AppDelegate.swift in Sources */,
+				1564E56E2C763D10006874EE /* NotesModel.swift in Sources */,
 				15393C142C74BA6F004900BB /* NewHistoryViewController.swift in Sources */,
+				15393C1B2C760A48004900BB /* NotesView.swift in Sources */,
+				15393C192C760434004900BB /* NotesViewController.swift in Sources */,
 				15393BF12C734C7E004900BB /* SceneDelegate.swift in Sources */,
 				15393C0B2C73588B004900BB /* OnbUserViewController.swift in Sources */,
 				15393C122C74AE89004900BB /* noHistoryView.swift in Sources */,
