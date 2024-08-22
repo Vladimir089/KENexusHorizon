@@ -20,6 +20,8 @@ class NotesView: UIView {
     var itemsSegmented = ["Archive", "Repetition", "Learned"]
     var segmentedControl: UISegmentedControl?
     
+    var sortedNotesArr: [Note] = []
+    
     var noHistView = noHistoryView()
 
     override init(frame: CGRect) {
@@ -187,7 +189,22 @@ class NotesView: UIView {
     }
     
     func checkArr() {
-        if notesArr.count > 0 {
+        
+        sortedNotesArr.removeAll()
+        
+        for i in notesArr {
+            if selectedCat != "All" {
+                if i.instrument == selectedCat , i.job == selectedLevel {
+                    sortedNotesArr.append(i)
+                }
+            } else {
+                if i.job == selectedLevel {
+                    sortedNotesArr.append(i)
+                }
+            }
+        }
+
+        if sortedNotesArr.count > 0 {
             noHistView.alpha = 0
             mainCollection?.alpha = 1
             midView?.snp.remakeConstraints({ make in
@@ -209,7 +226,7 @@ class NotesView: UIView {
     
     @objc func selectSegmented() {
         selectedLevel = itemsSegmented[segmentedControl?.selectedSegmentIndex ?? 0]
-        print(selectedLevel)
+        checkArr()
     }
     
 }
@@ -220,7 +237,7 @@ extension NotesView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         if collectionView == categoryCollection {
             return intrumentsArr.count
         } else {
-            return sortedHistoryArr.count //пменять на сортированный массив
+            return sortedNotesArr.count //пменять на сортированный массив
         }
     }
     
@@ -245,8 +262,6 @@ extension NotesView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
                 label.font = .systemFont(ofSize: 13, weight: .regular)
                 cell.backgroundColor = UIColor(red: 106/255, green: 79/255, blue: 90/255, alpha: 1)
             }
-            
-            
                     
             cell.addSubview(label)
             label.snp.makeConstraints { make in
@@ -260,11 +275,11 @@ extension NotesView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             cell.backgroundColor = UIColor(red: 25/255, green: 4/255, blue: 14/255, alpha: 1)
             cell.layer.cornerRadius = 12
             
-            let item = sortedHistoryArr[indexPath.row]
+            let item = sortedNotesArr[indexPath.row]
             
             let categoryButt = UIButton()
             categoryButt.isEnabled = false
-            categoryButt.setTitle(item.intrument, for: .normal)
+            categoryButt.setTitle(item.instrument, for: .normal)
             categoryButt.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
             categoryButt.setTitleColor(.white, for: .normal)
             categoryButt.backgroundColor = UIColor(red: 180/255, green: 12/255, blue: 92/255, alpha: 1)
@@ -272,10 +287,10 @@ extension NotesView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             categoryButt.titleLabel?.font = .systemFont(ofSize: 11, weight: .semibold)
             cell.addSubview(categoryButt)
             categoryButt.snp.makeConstraints { make in
-                if item.intrument != "Category" {
+                if item.instrument != "Category" {
                     make.top.right.equalToSuperview().inset(15)
                     make.height.equalTo(21)
-                    make.width.equalTo(calculateDynamicWidth(for: item.intrument))
+                    make.width.equalTo(calculateDynamicWidth(for: item.instrument))
                 } else {
                     make.width.equalTo(0)
                     make.height.equalTo(0)
@@ -295,7 +310,7 @@ extension NotesView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             }
             
             let dateLabelText = UILabel()
-            dateLabelText.text = "Date"
+            dateLabelText.text = "Job status"
             dateLabelText.font = .systemFont(ofSize: 13, weight: .regular)
             dateLabelText.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
             cell.addSubview(dateLabelText)
@@ -305,7 +320,7 @@ extension NotesView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             }
             
             let timeLabelText = UILabel()
-            timeLabelText.text = "Time"
+            timeLabelText.text = "Difficulty level"
             timeLabelText.font = .systemFont(ofSize: 13, weight: .regular)
             timeLabelText.textColor = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1)
             cell.addSubview(timeLabelText)
@@ -315,7 +330,7 @@ extension NotesView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             }
             
             let dateLabel = UILabel()
-            dateLabel.text = item.date
+            dateLabel.text = item.job
             dateLabel.font = .systemFont(ofSize: 15, weight: .semibold)
             dateLabel.textColor = .white
             cell.addSubview(dateLabel)
@@ -326,7 +341,7 @@ extension NotesView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
             }
             
             let timelabel = UILabel()
-            timelabel.text = item.time
+            timelabel.text = item.level
             timelabel.font = .systemFont(ofSize: 15, weight: .semibold)
             timelabel.textColor = .white
             cell.addSubview(timelabel)
@@ -346,25 +361,21 @@ extension NotesView: UICollectionViewDelegate, UICollectionViewDataSource, UICol
         if collectionView == categoryCollection {
             selectedCat = intrumentsArr[indexPath.row]
             categoryCollection?.reloadData()
+            checkArr()
             
             
-            //sortArray()
             
-        } // else {
-//
-//            var index = 0
-//            let hist = sortedHistoryArr[indexPath.row]
-//            
-//            for i in historyArr {
-//                if hist.date == i.date, hist.intrument == i.intrument, i.name == hist.name, hist.time == i.time {
-//                    openNewHistoryPage(isNew: false, index: index)
-//                    return
-//                } else {
-//                    index += 1
-//                }
-//            }
-//    
-//        }
+        } else {
+            var ind = 0
+            for i in notesArr {
+                if i.imagies == sortedNotesArr[indexPath.row].imagies, i.instrument == sortedNotesArr[indexPath.row].instrument, i.job == sortedNotesArr[indexPath.row].job, i.name == sortedNotesArr[indexPath.row].name {
+                    controller?.openDetail(index: ind)
+                } else {
+                    ind += 1
+                }
+            }
+
+        }
         
     }
    

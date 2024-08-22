@@ -24,6 +24,7 @@
 		15393C1B2C760A48004900BB /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15393C1A2C760A48004900BB /* NotesView.swift */; };
 		1564E56E2C763D10006874EE /* NotesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1564E56D2C763D10006874EE /* NotesModel.swift */; };
 		1564E5702C764979006874EE /* NewNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1564E56F2C764979006874EE /* NewNoteViewController.swift */; };
+		1564E5722C777B74006874EE /* DetailNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1564E5712C777B74006874EE /* DetailNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		15393C1A2C760A48004900BB /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		1564E56D2C763D10006874EE /* NotesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesModel.swift; sourceTree = "<group>"; };
 		1564E56F2C764979006874EE /* NewNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewNoteViewController.swift; sourceTree = "<group>"; };
+		1564E5712C777B74006874EE /* DetailNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				15393C1A2C760A48004900BB /* NotesView.swift */,
 				1564E56D2C763D10006874EE /* NotesModel.swift */,
 				1564E56F2C764979006874EE /* NewNoteViewController.swift */,
+				1564E5712C777B74006874EE /* DetailNoteViewController.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				15393C052C734EB0004900BB /* LoadViewController.swift in Sources */,
 				1564E5702C764979006874EE /* NewNoteViewController.swift in Sources */,
 				15393C102C74A8A1004900BB /* HistoryModel.swift in Sources */,
+				1564E5722C777B74006874EE /* DetailNoteViewController.swift in Sources */,
 				15393BEF2C734C7E004900BB /* AppDelegate.swift in Sources */,
 				1564E56E2C763D10006874EE /* NotesModel.swift in Sources */,
 				15393C142C74BA6F004900BB /* NewHistoryViewController.swift in Sources */,

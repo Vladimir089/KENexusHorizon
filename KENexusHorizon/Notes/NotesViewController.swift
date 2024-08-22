@@ -31,6 +31,25 @@ class NotesViewController: UIViewController {
         mainView = NotesView()
         mainView?.controller = self
         self.view = mainView
+        notesArr = loadAthleteArrFromFile() ?? []
+        mainView?.checkArr()
+    }
+    
+    func loadAthleteArrFromFile() -> [Note]? {
+        let fileManager = FileManager.default
+        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Unable to get document directory")
+            return nil
+        }
+        let filePath = documentDirectory.appendingPathComponent("notes.plist")
+        do {
+            let data = try Data(contentsOf: filePath)
+            let athleteArr = try JSONDecoder().decode([Note].self, from: data)
+            return athleteArr
+        } catch {
+            print("Failed to load or decode athleteArr: \(error)")
+            return nil
+        }
     }
     
     
@@ -46,12 +65,21 @@ class NotesViewController: UIViewController {
         if isNew == true {
             vc.index = index
             vc.note = item
+            vc.instrument = mainView?.selectedCat ?? "All"
         }
         
         self.present(vc, animated: true)
         
     }
     
+    
+    func openDetail(index: Int) {
+        let vc = DetailNoteViewController()
+        vc.delegate = self
+        vc.index = index
+        print(notesArr[index])
+        self.present(vc, animated: true)
+    }
    
 }
 
@@ -60,6 +88,8 @@ extension NotesViewController: NotesViewControllerDelegate {
     func reloadTable() {
         mainView?.checkArr()
     }
+    
+
     
     
 }
