@@ -19,7 +19,7 @@ class LoadViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 255/255, green: 0/255, blue: 104/255, alpha: 1)
         createInerface()
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(actionTImer), userInfo: nil, repeats: true) //поменять на 0.07
+        timer = Timer.scheduledTimer(timeInterval: 0.07, target: self, selector: #selector(actionTImer), userInfo: nil, repeats: true) //поменять на 0.07
     }
     
     @objc func actionTImer() {

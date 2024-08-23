@@ -96,6 +96,7 @@ class HomeViewController: UIViewController {
             make.left.equalTo(oneImageView.snp.right).inset(-5)
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
+        buttonSettings.addTarget(self, action: #selector(opnSettings), for: .touchUpInside)
         
         let notesBitton: UIButton = {
             let button = UIButton(type: .system)
@@ -250,7 +251,10 @@ class HomeViewController: UIViewController {
     }
     
    
-    
+    @objc func opnSettings() {
+        let vc = SettingsViewController()
+        self.present(vc, animated: true)
+    }
     
     
     @objc func createNewHistory() {

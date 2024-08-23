@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol DetailNoteViewControllerDelegate: AnyObject {
+    func reload()
+    func del()
+}
+
 class DetailNoteViewController: UIViewController {
     
     var index = 0
@@ -46,6 +51,7 @@ class DetailNoteViewController: UIViewController {
         editButton.snp.makeConstraints { make in
             make.right.top.equalToSuperview().inset(15)
         }
+        editButton.addTarget(self, action: #selector(openEditPage), for: .touchUpInside)
         
         let buttonIntrument: UIButton = {
             let button = UIButton()
@@ -138,8 +144,19 @@ class DetailNoteViewController: UIViewController {
         })
         
     }
+    
+    @objc func openEditPage() {
+        let vc = NewNoteViewController()
+        vc.isNew = false
+        vc.index = index
+        vc.secondDelegate = self
+        
+        self.present(vc, animated: true)
+    }
 
 }
+
+//доделать редактирование и удаление
 
 
 extension DetailNoteViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -170,6 +187,24 @@ extension DetailNoteViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 112, height: 158)
+    }
+    
+}
+
+
+extension DetailNoteViewController: DetailNoteViewControllerDelegate {
+    func reload() {
+        nameLabel?.text = notesArr[index].name
+        jobStatusLabel?.text = notesArr[index].job
+        levelLabel?.text = notesArr[index].level
+        collection?.reloadData()
+        delegate?.reloadTable()
+    }
+    
+    
+    func del() {
+        delegate?.reloadTable()
+        self.dismiss(animated: true)
     }
     
 }

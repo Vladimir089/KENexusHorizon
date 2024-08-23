@@ -10,6 +10,7 @@ import UIKit
 class NewNoteViewController: UIViewController, UIImagePickerControllerDelegate ,UINavigationControllerDelegate {
     
     weak var delegate: NotesViewControllerDelegate?
+    weak var secondDelegate: DetailNoteViewControllerDelegate?
     var isNew = true
     
     var index = 0
@@ -32,6 +33,23 @@ class NewNoteViewController: UIViewController, UIImagePickerControllerDelegate ,
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 25/255, green: 4/255, blue: 14/255, alpha: 1)
         createInterface()
+        checkISNew()
+        checkSaveButton()
+        
+    }
+    
+    func checkISNew() {
+        if isNew == false {
+            nameTextField?.text = notesArr[index].name
+            selectedJob = notesArr[index].job
+            selectedLevel = notesArr[index].level
+            instrument = notesArr[index].instrument
+            images = notesArr[index].imagies
+            
+            jobSelectedLabel?.text = selectedJob
+            levelSelectedLabel?.text = selectedLevel
+            mainCollection?.reloadData()
+        }
     }
     
     
@@ -39,7 +57,7 @@ class NewNoteViewController: UIViewController, UIImagePickerControllerDelegate ,
         
         let hideView: UIView = {
             let view = UIView()
-            view.backgroundColor = UIColor(red: 60/255, green: 60/255, blue: 67/255, alpha: 0.3)
+            view.backgroundColor = .white.withAlphaComponent(0.3)
             view.layer.cornerRadius = 2.5
             return view
         }()
@@ -216,8 +234,10 @@ class NewNoteViewController: UIViewController, UIImagePickerControllerDelegate ,
              let data = try JSONEncoder().encode(notesArr)
              try saveAthleteArrToFile(data: data)
             
-             self.dismiss(animated: true)
+             
              delegate?.reloadTable()
+             secondDelegate?.reload()
+             self.dismiss(animated: true)
          } catch {
              print("Failed to encode or save athleteArr: \(error)")
          }
@@ -230,8 +250,10 @@ class NewNoteViewController: UIViewController, UIImagePickerControllerDelegate ,
             let data = try JSONEncoder().encode(notesArr)
             try saveAthleteArrToFile(data: data)
            
+            
+           // delegate?.reloadTable()
             self.dismiss(animated: true)
-            delegate?.reloadTable()
+            secondDelegate?.del()
         } catch {
             print("Failed to encode or save athleteArr: \(error)")
         }
